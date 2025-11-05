@@ -76,6 +76,16 @@ export default function Projects() {
                       <li key={i}>{d}</li>
                     ))}
                   </ul>
+
+                  {/* ✅ Added link — appears only for BLE Audio */}
+                  {p.id === 'ble-audio' && (
+                    <a
+                      href="/case-study/ble-audio"
+                      className="mt-4 inline-block text-sm text-accent hover:text-white transition"
+                    >
+                      → Read Full Case Study
+                    </a>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
