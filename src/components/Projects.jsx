@@ -86,6 +86,15 @@ export default function Projects() {
                       → Read Full Case Study
                     </a>
                   )}
+                  {/* ✅ Added link — appears only for IOT Monitor */}
+                  {p.id === 'env-monitor' && (
+                    <a
+                      href="/case-study/iot-monitor"
+                      className="mt-4 inline-block text-sm text-accent hover:text-white transition"
+                    >
+                      → Read Case Study
+                    </a>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
