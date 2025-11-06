@@ -1,0 +1,182 @@
+/* Subtle animated border glow */
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(0, 209, 178, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(0, 209, 178, 0.6);
+  }
+}
+
+
+.glow-border {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(40px, 40px);
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-60px, -30px) scale(1.02);
+  }
+}
+
+.animate-gridMove {
+  animation: gridMove 40s linear infinite;
+}
+
+.animate-gridDrift {
+  animation: gridDrift 60s linear infinite;
+}
+
+/* Light mode overrides */
+.light body {
+  background-color: var(--lightbg);
+  color: var(--lighttext);
+}
+
+.light .card-bg {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light .text-muted {
+  color: var(--lightmuted) !important;
+}
+
+.light .border-white\/6 {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light .bg-glow {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+@keyframes glowPulseDark {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 209, 178, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(0, 209, 178, 0.6); }
+}
+
+@keyframes glowPulseLight {
+  0%, 100% { box-shadow: 0 0 8px rgba(100,116,139,0.3); }
+  50% { box-shadow: 0 0 16px rgba(100,116,139,0.45); }
+}
+
+.glow-border {
+  animation: glowPulseDark 3s ease-in-out infinite;
+}
+
+.light .glow-border {
+  animation: glowPulseLight 3s ease-in-out infinite;
+}
+
+
+/* --- Smooth Theme Transition --- */
+html,
+body,
+#root {
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out,
+    border-color 0.4s ease-in-out,
+    fill 0.4s ease-in-out,
+    stroke 0.4s ease-in-out;
+}
+
+/* Make components respect the transition too */
+.card-bg,
+nav,
+footer,
+aside,
+section,
+div,
+button,
+input,
+textarea {
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out,
+    border-color 0.4s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+}
+
+/* --- Animated Icon & Button Hover Effects --- */
+
+/* Teal ripple glow around interactive elements */
+@keyframes rippleGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 209, 178, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 209, 178, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 209, 178, 0);
+  }
+}
+
+.hover-glow:hover {
+  animation: rippleGlow 1.2s ease-out;
+}
+
+/* Icon float effect for hoverable icons */
+.icon-float {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.icon-float:hover {
+  transform: translateY(-3px);
+  color: #00d1b2;
+}
+
+/* Button neon pulse on hover */
+.btn-pulse {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-pulse:hover {
+  box-shadow: 0 0 12px rgba(0, 209, 178, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Light mode adjustments */
+.light .icon-float:hover {
+  color: #475569;
+}
+.light .btn-pulse:hover {
+  box-shadow: 0 0 10px rgba(71, 85, 105, 0.4);
+}
+
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.icon-float::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  background-size: 200px 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.icon-float:hover::after {
+  opacity: 1;
+  animation: shimmer 1s linear;
+}
