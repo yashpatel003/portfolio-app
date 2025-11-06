@@ -1,13 +1,16 @@
-import React from 'react'
-import { useTheme } from '../context/ThemeContext'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import React from "react"
+import { useTheme } from "../context/ThemeContext"
+import { useMotion } from "../context/MotionContext"
+import { FaMoon, FaSun, FaRunning } from "react-icons/fa"
 
 export default function Navbar({ onContact }) {
   const { theme, toggleTheme } = useTheme()
+  const { reduceMotion, toggleMotion } = useMotion()
 
   return (
     <nav className="w-full border-b border-white/6 bg-transparent">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+        {/* 🔷 Left Logo / Name */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-md bg-glow flex items-center justify-center text-accent font-bold">
             FE
@@ -17,21 +20,47 @@ export default function Navbar({ onContact }) {
             <div className="text-xs text-muted">Firmware & Embedded Systems</div>
           </div>
         </div>
+
+        {/* 🔷 Navigation + Controls */}
         <div className="flex items-center gap-4">
-          <a href="#projects" className="text-sm text-muted hover:text-accent">Projects</a>
-          <a href="#about" className="text-sm text-muted hover:text-accent">About</a>
+          <a href="#projects" className="text-sm text-muted hover:text-accent">
+            Projects
+          </a>
+          <a href="#about" className="text-sm text-muted hover:text-accent">
+            About
+          </a>
+
           <button
             onClick={onContact}
             className="text-sm px-3 py-1 rounded-md border border-white/6 text-accent btn-pulse"
           >
             Contact
           </button>
+
+          {/* 🌙 Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="ml-2 p-2 rounded-md border border-white/10 hover:bg-white/10 btn-pulse"
-            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
-            {theme === 'dark' ? <FaSun className="text-accent" /> : <FaMoon className="text-lighttext" />}
+            {theme === "dark" ? (
+              <FaSun className="text-accent" />
+            ) : (
+              <FaMoon className="text-lighttext" />
+            )}
+          </button>
+
+          {/* 🏃 Motion Toggle */}
+          <button
+            onClick={toggleMotion}
+            className="ml-2 p-2 rounded-md border border-white/10 hover:bg-white/10 btn-pulse"
+            title={reduceMotion ? "Enable animations" : "Disable animations"}
+          >
+            <FaRunning
+              className={`${
+                reduceMotion ? "text-muted" : "text-accent icon-float"
+              } transition-colors`}
+            />
           </button>
         </div>
       </div>
