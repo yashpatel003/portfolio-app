@@ -27,19 +27,19 @@ export default function Hero({ onContact }) {
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/6 text-accent"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/6 text-accent btn-pulse"
             >
               View Projects
             </a>
             <button
               onClick={onContact}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-black font-semibold"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-black font-semibold btn-pulse"
             >
               Get in Touch
             </button>
             <a
               href="/resume.pdf"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/6 text-muted"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/6 text-muted btn-pulse"
             >
               Download Resume
             </a>

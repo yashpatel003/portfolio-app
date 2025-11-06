@@ -35,8 +35,8 @@ export default function ContactPanel({ open, onClose }) {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-lg font-semibold">Contact Me</div>
-                <div className="text-sm text-muted">Get in touch or request a case study</div>
+                <div className="text-lg font-semibold btn-pulse">Contact Me</div>
+                <div className="text-sm text-muted btn-pulse">Get in touch or request a case study</div>
               </div>
               <button onClick={onClose} className="text-muted">Close</button>
             </div>

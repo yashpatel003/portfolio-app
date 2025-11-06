@@ -69,6 +69,7 @@ export default function SidebarNav({ onContact }) {
                     : 'text-muted hover:text-white'
                 }`}
               >
+                <div className="icon-float">{item.icon}</div>
                 {item.name}
               </Link>
             ))}

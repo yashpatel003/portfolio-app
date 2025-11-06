@@ -31,7 +31,7 @@ export default function Navbar({ onContact }) {
             className="ml-2 p-2 rounded-md border border-white/10 hover:bg-white/10 btn-pulse"
             title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
-            {theme === 'dark' ? <FaSun className="text-accent icon-float" /> : <FaMoon className="text-lighttext icon-float" />}
+            {theme === 'dark' ? <FaSun className="text-accent" /> : <FaMoon className="text-lighttext" />}
           </button>
         </div>
       </div>
