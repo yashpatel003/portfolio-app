@@ -1,4 +1,6 @@
+// src/components/Skills.jsx
 import React from 'react'
+import { motion } from 'framer-motion'
 import { FaCode, FaTools, FaMicrochip } from 'react-icons/fa'
 
 const skills = [
@@ -39,16 +41,30 @@ const skills = [
 
 export default function Skills() {
   return (
-    <div className="card-bg p-6 rounded-2xl border border-white/6">
+    <motion.div
+      className="card-bg p-6 rounded-2xl border border-white/6"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ staggerChildren: 0.15 }}
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.15 } }
+      }}
+    >
       <h3 className="text-lg font-semibold">Skills</h3>
       <div className="mt-5 space-y-4">
         {skills.map((s, i) => (
-          <div
+          <motion.div
             key={i}
+            variants={{
+              hidden: { opacity: 0, y: 25 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+            }}
             className="p-4 rounded-lg border border-white/6 hover:bg-white/3 transition duration-200"
           >
             <div className="flex items-center gap-3 mb-2">
-              <div className="text-accent text-xl">{s.icon}</div>
+              <div className="text-accent text-xl icon-float">{s.icon}</div>
               <div className="font-semibold">{s.title}</div>
             </div>
             <ul className="list-disc list-inside text-sm text-muted">
@@ -56,9 +72,9 @@ export default function Skills() {
                 <li key={idx}>{item}</li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }

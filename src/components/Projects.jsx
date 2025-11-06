@@ -46,16 +46,15 @@ export default function Projects() {
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-4"
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.25 }}
+        transition={{ staggerChildren: 0.2 }}
         variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-          },
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.2 } }
         }}
       >
+
         {projects.map((p) => (
           <motion.article
             key={p.id}
