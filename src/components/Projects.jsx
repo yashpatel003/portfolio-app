@@ -41,10 +41,25 @@ export default function Projects() {
   return (
     <section id="projects" className="space-y-4">
       <h3 className="text-xl font-semibold">Selected Projects</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      {/* 🧩 Animated grid container with staggered children */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+          },
+        }}
+      >
         {projects.map((p) => (
           <motion.article
             key={p.id}
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
             whileHover={{ y: -4 }}
             className="card-bg p-5 rounded-xl border border-white/6 transition"
           >
@@ -77,7 +92,7 @@ export default function Projects() {
                     ))}
                   </ul>
 
-                  {/* ✅ Added link — appears only for BLE Audio */}
+                  {/* ✅ Case Study Links */}
                   {p.id === 'ble-audio' && (
                     <a
                       href="/case-study/ble-audio"
@@ -86,7 +101,6 @@ export default function Projects() {
                       → Read Full Case Study
                     </a>
                   )}
-                  {/* ✅ Added link — appears only for IOT Monitor */}
                   {p.id === 'env-monitor' && (
                     <a
                       href="/case-study/iot-monitor"
@@ -108,7 +122,7 @@ export default function Projects() {
             </div>
           </motion.article>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }
